@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcomputerstudy.example.mapper.SurveyMapper">
+	<insert id="itemInsert">
+		INSERT INTO lc_item(
+			i_item,
+			q_id,
+			s_id
+		) VALUES
+		<foreach collection="iList" item="item" separator=",">
+			(
+				#{item.value},
+				#{qId},
+				#{sId}
+			)
+		</foreach>
+	</insert>
+	
+	<insert id="questionInsert">
+		INSERT INTO lc_question(
+			q_title,
+			q_type,
+			s_id
+		) 
+			
+			<selectKey keyProperty="qId" resultType="Integer">
+				SELECT LAST_INSERT_ID()
+			</selectKey>
+		
+		VALUES 
+		<foreach collection="qList" item="question" separator=",">
+		(
+			#{question.title},
+			#{question.type},
+			#{sId}
+		)
+		</foreach>
+	</insert>
+	
+	<insert id="surveyInsert" parameterType="Survey">
+		INSERT INTO lc_survey(
+			s_title,
+			s_subtitle,
+			s_writer,
+			s_datetime,
+			u_id
+		) 
+			
+			<selectKey keyProperty="sId" resultType="Integer">
+				SELECT LAST_INSERT_ID()
+			</selectKey>
+		
+		VALUES (
+			#{sTitle},
+			#{sSubTitle},
+			#{sWriter},
+			now(),
+			#{uId}
+		)
+	</insert>
+	
+	<select id="selectSurveyList" resultType="Survey">
+		SELECT	@rownum:=@rownum-1 AS rownum,
+				s_id as sId,
+				s_title as sTitle,
+				s_subtitle as sSubTitle,
+				s_writer as sWriter,
+				s_datetime as sDateTime,
+				u_id as uId
+		FROM	lc_survey ta
+		INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-${pagination.pageNum}+1 FROM lc_survey ta)) tb
+		ON			1=1
+		ORDER BY s_datetime DESC
+		LIMIT	${pagination.pageNum},3
+	</select>
+	
+	<select id="surveyCount" resultType="int">
+		SELECT COUNT(*) AS count
+		FROM lc_survey
+	</select>
+	
+	<select id="selectSurveyDetail" resultMap="surveyMap">
+		SELECT			td.s_id,
+						td.s_title,
+						td.s_subtitle,
+						tc.q_id,
+						tc.q_title,
+						tc.q_type,
+						tc.i_item,
+						tc.i_id
+		FROM			lc_survey td
+		LEFT JOIN 		((SELECT ta.q_id AS q_id, ta.q_title AS q_title, ta.q_type AS q_type, ta.s_id AS s_id, tb.i_item AS i_item, tb.i_id AS i_id 
+						  FROM lc_question ta 
+						  LEFT JOIN lc_item tb 
+						  ON ta.q_id=tb.q_id)) tc
+		ON				td.s_id=tc.s_id
+		WHERE			td.s_id=#{sId}
+	</select>
+	
+	<resultMap id="surveyMap" type="Survey">
+		<id property="sId" column="s_id"/>
+		<result property="sTitle" column="s_title"/>
+		<result property="sSubTitle" column="s_subtitle"/>
+		<result property="sId" column="s_id"/>
+
+		<collection property="questionList" ofType="Question">
+			<id property="qId" column="q_id"/>
+			<result property="qId" column="q_id"/>
+			<result property="qTitle" column="q_title"/>
+			<result property="qType" column="q_type"/>
+			<collection property="itemList" ofType="Item">
+				<id property="iId" column="i_id"/>
+				<result property="value" column="i_item"/>
+			</collection>
+		</collection>
+	</resultMap>
+	
+	<delete id="surveyDelete">
+		DELETE FROM lc_survey
+		WHERE s_id=#{sId}
+	</delete>
+	
+	<delete id="questionDelete">
+		DELETE FROM lc_question
+		WHERE s_id=#{sId}
+	</delete>
+	
+	<delete id="itemDelete">
+		DELETE FROM lc_item
+		WHERE s_id=#{sId}
+	</delete>
+	
+	<insert id="addSurveyAnswer">
+		INSERT INTO lc_answer(
+			q_id,
+			s_id,
+			a_answer,
+			a_writer,
+			a_datetime,
+			u_id
+		) VALUES
+		<foreach collection="aList" item="answer" separator=",">
+			(
+				#{answer.qId},
+				#{sId},
+				#{answer.value},
+				#{aWriter},
+				now(),
+				#{uId}
+			)
+		</foreach>
+	</insert>
+	
+	<select id="selectSurveyUser" resultMap="surveyUser">
+		SELECT			td.s_id,
+						td.s_title,
+						td.s_subtitle,
+						tc.q_id,
+						tc.q_title,
+						tc.q_type,
+						tc.a_answer,
+						tc.a_writer,
+						tc.a_id,
+						tc.u_id,
+						tc.a_datetime
+		FROM			lc_survey td
+		LEFT JOIN 		((	SELECT 		ta.q_id as q_id, ta.q_title AS q_title, ta.q_type AS q_type, ta.s_id AS s_id, tb.a_answer AS a_answer, tb.a_writer AS a_writer, tb.a_id AS a_id, tb.u_id AS u_id, tb.a_datetime AS a_datetime
+							FROM 		lc_question ta 
+							LEFT JOIN 	lc_answer tb 
+							ON 			ta.q_id=tb.q_id
+							WHERE		ta.s_id=#{sId} )) tc
+		ON				td.s_id=tc.s_id
+		WHERE			td.s_id=#{sId}
+	</select>
+	
+	<resultMap id="surveyUser" type="Survey">
+		<id property="sId" column="s_id"/>
+		<result property="sTitle" column="s_title"/>
+		<result property="sSubTitle" column="s_subtitle"/>
+		<result property="sId" column="s_id"/>
+		<collection property="questionList" ofType="Question">
+			<id property="qId" column="q_id"/>
+			<result property="qId" column="q_id"/>
+			<result property="qTitle" column="q_title"/>
+			<result property="qType" column="q_type"/>
+			<collection property="answerList" ofType="Answer">
+				<id property="aId" column="a_id"/>
+				<result property="value" column="a_answer"/>
+				<result property="aWriter" column="a_writer"/>
+				<result property="aDateTime" column="a_datetime"/>
+				<result property="uId" column="u_id"/>
+				<result property="aId" column="a_id"/>
+				<result property="qId" column="q_id"/>
+			</collection>
+		</collection>
+	</resultMap>
+	
+	<select id="selectAnswerDetail" resultMap="answerMap">
+		SELECT			td.s_id,
+						td.s_title,
+						td.s_subtitle,
+						tc.q_id,
+						tc.q_title,
+						tc.q_type,
+						tc.a_answer,
+						tc.a_id,
+						tc.u_id,
+						tc.i_id,
+						tc.i_item
+		FROM			lc_survey td
+		LEFT JOIN 		((	SELECT 		ta.q_id as q_id, ta.q_title AS q_title, ta.q_type AS q_type, ta.s_id AS s_id, tb.a_answer AS a_answer, tb.a_id AS a_id, tb.u_id AS u_id, td.i_id AS i_id, td.i_item AS i_item
+							FROM 		lc_question ta 
+							LEFT JOIN 	lc_answer tb 
+							ON 			ta.q_id=tb.q_id
+							LEFT JOIN 	lc_item td 
+							ON 			ta.q_id=td.q_id
+							WHERE		tb.u_id=#{sWriter} )) tc
+		ON				td.s_id=tc.s_id
+		WHERE			td.s_id=#{sId}
+	</select>
+	
+	<resultMap id="answerMap" type="Survey">
+		<id property="sId" column="s_id"/>
+		<result property="sTitle" column="s_title"/>
+		<result property="sSubTitle" column="s_subtitle"/>
+		<result property="sId" column="s_id"/>
+
+		<collection property="questionList" ofType="Question">
+			<id property="qId" column="q_id"/>
+			<result property="qId" column="q_id"/>
+			<result property="qTitle" column="q_title"/>
+			<result property="qType" column="q_type"/>
+			<collection property="answerList" ofType="Answer">
+				<id property="aId" column="a_id"/>
+				<result property="value" column="a_answer"/>
+				<result property="uId" column="u_id"/>
+				<result property="aId" column="a_id"/>
+				<result property="qId" column="q_id"/>
+			</collection>
+			<collection property="itemList" ofType="Item">
+				<id property="iId" column="i_id"/>
+				<result property="value" column="i_item"/>
+				<result property="iId" column="i_id"/>
+				<result property="qId" column="q_id"/>
+			</collection>
+		</collection>
+	</resultMap>
+	
+	<select id="itemValueList" resultType="Item">
+		SELECT 	ta.i_item as value
+		FROM 	lc_item ta
+		WHERE 	1=1
+		AND		s_id=#{sId}
+		AND		q_id=#{qId}
+	</select>
+	
+	<select id="answerCount" resultType="Integer">
+		SELECT 	COUNT(*) AS count
+		FROM 	lc_answer ta
+		WHERE	a_answer=#{countWord}
+	</select>
+
+</mapper>

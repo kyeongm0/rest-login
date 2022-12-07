@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcomputerstudy.example.mapper.CommentMapper">
+
+	<select id="selectCommentList" resultType="Comment">
+			SELECT	@rownum:=@rownum-1 AS rownum,
+					c_num as cId,
+					c_content as cContent,
+					c_writer as cWriter,
+					c_datetime as cDateTime,
+					c_showreply as cShowReply,
+					c_showedit as cShowEdit,
+					b_id as bId,
+					c_group as cGroup,
+					c_order as cOrder,
+					c_depth as cDepth,
+					u_id as uId
+		FROM		lc_comment ta
+		INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-${pagination.pageNum}+1 FROM lc_comment ta)) tb
+		ON			1=1
+		WHERE		b_id=#{bId}
+		ORDER BY 	c_group DESC, c_order ASC
+		LIMIT		${pagination.pageNum},3
+	</select>
+	
+	<select id="commentCount" resultType="int">
+		SELECT 	COUNT(*) AS count
+		FROM 	lc_comment
+		WHERE	b_id=#{bId}
+	</select>
+	
+	<insert id="createComment" parameterType="Board">
+		INSERT INTO lc_comment (
+			c_content,
+			c_writer,
+			c_datetime,
+			b_id,
+			c_order,
+			c_depth,
+			u_id
+		) 
+			<selectKey keyProperty="cId" resultType="Integer">
+				SELECT LAST_INSERT_ID()
+			</selectKey>
+		VALUES (
+			#{cContent},
+			#{cWriter},
+			now(),
+			#{bId},
+			1,
+			0,
+			#{uId}
+		)
+	</insert>
+	
+	<update id="groupUpdate">
+		UPDATE lc_comment SET
+			c_group=#{cId}
+		WHERE c_num=#{cId}
+	</update>
+	
+	<insert id="createCommentReply" parameterType="Board">
+		INSERT INTO lc_comment (
+			c_content,
+			c_writer,
+			c_datetime,
+			b_id,
+			c_group,
+			c_order,
+			c_depth
+		) 
+			<selectKey keyProperty="cId" resultType="Integer">
+				SELECT LAST_INSERT_ID()
+			</selectKey>
+		VALUES (
+			#{cContent},
+			#{cWriter},
+			now(),
+			#{bId},
+			#{cGroup},
+			#{cOrder}+1,
+			#{cDepth}
+		)
+	</insert>
+	
+	<update id="orderUpdate">
+		UPDATE lc_comment SET
+			c_order=c_order+1
+		WHERE c_group=#{cGroup} AND c_order>=#{cOrder} AND c_num!=#{cId} AND c_num!=#{cOrigin}
+	</update>
+	
+	<update id="depthUpdate">
+		UPDATE lc_comment SET
+			c_depth=c_depth+1
+		WHERE c_num=#{cId}
+	</update>
+	
+	<update id="selectCommentEdit">
+		UPDATE lc_comment SET
+			c_content=#{cContent}
+		WHERE c_num=#{cId}
+	</update>
+	
+	<delete id="selectCommentDelete">
+		DELETE FROM lc_comment
+		WHERE c_num=#{cId}
+	</delete>
+
+</mapper>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcomputerstudy.example.mapper.BoardMapper">
+	<select id="selectBoardList" resultType="Board">
+		SELECT	@rownum:=@rownum-1 AS rownum,
+				b_id as bId,
+				b_title as bTitle,
+				b_content as bContent,
+				b_writer as bWriter,
+				b_datetime as bDateTime,
+				b_group as bGroup,
+				b_order as bOrder,
+				b_depth as bDepth
+		FROM	lc_board ta
+		INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-${pagination.pageNum}+1 FROM lc_board ta)) tb
+		ON			1=1
+		ORDER BY b_group DESC, b_order ASC
+		LIMIT	${pagination.pageNum},3
+	</select>
+	<select id="selectBoardDetail" resultMap="uploadMap">
+		SELECT			ta.b_id,
+						ta.b_title,
+						ta.b_content,
+						ta.b_writer,
+						ta.u_id,
+						ta.b_datetime,
+						ta.b_group,
+						ta.b_order,
+						ta.b_depth,
+						tb.l_id,
+						tb.l_upload,
+						tb.l_filename
+		FROM			lc_board ta
+		LEFT JOIN		lc_upload tb
+		ON				ta.b_id = tb.b_id
+		WHERE			ta.b_id = #{bId}
+	</select>
+	
+	<resultMap id="uploadMap" type="Board">
+		<id property="bId" column="b_id"/>
+		<result property="bTitle" column="b_title"/>
+		<result property="bContent" column="b_content"/>
+		<result property="bWriter" column="b_writer"/>
+		<result property="bDateTime" column="b_datetime"/>
+		<result property="bGroup" column="b_group"/>
+		<result property="bOrder" column="b_order"/>
+		<result property="bDepth" column="b_depth"/>
+		<result property="uId" column="u_id"/>		
+
+		<collection property="uploadList" ofType="Upload">
+			<id property="lId" column="l_id"/>
+			<result property="bId" column="b_id"/>
+			<result property="upload" column="l_upload"/>
+			<result property="fileName" column="l_filename"/>
+		</collection>
+	</resultMap>
+	
+	<select id="deleteBoard" resultType="Board" parameterType="int">
+		DELETE			
+		FROM			lc_board
+		WHERE			b_id = #{bId}
+	</select>
+	
+	<select id="insertBoard" resultType="Board" parameterType="int">
+		INSERT INTO			
+		FROM			lc_board
+		WHERE			b_id = #{bId}
+	</select>
+	
+	<update id="selectBoardEdit">
+		UPDATE lc_board SET
+			b_title=#{bTitle},
+			b_content=#{bContent}
+		WHERE b_id=#{bId}
+	</update>
+	
+	<insert id="createBoard" parameterType="Board">
+		INSERT INTO lc_board (
+			b_title,
+			b_content,
+			b_writer,
+			u_id,
+			b_datetime,
+			b_brdhit,
+			b_order,
+			b_depth
+		) 
+			<selectKey keyProperty="bId" resultType="Integer">
+				SELECT LAST_INSERT_ID()
+			</selectKey>
+		VALUES (
+			#{bTitle},
+			#{bContent},
+			#{bWriter},
+			#{uId},
+			now(),
+			0,
+			1,
+			0
+		)
+	</insert>
+	
+	<update id="groupUpdate">
+		UPDATE lc_board SET
+			b_group=#{bId}
+		WHERE b_id=#{bId}
+	</update>
+	
+	<update id="hitUpdate">
+		UPDATE lc_board SET
+			b_brdhit=b_brdhit+1
+		WHERE b_id=#{bId}
+	</update>
+	
+	<insert id="createReply" parameterType="Board">
+		INSERT INTO lc_board (
+			b_title,
+			b_content,
+			b_writer,
+			b_datetime,
+			b_brdhit,
+			b_group,
+			b_order,
+			b_depth
+		)
+			<selectKey keyProperty="bId" resultType="Integer">
+				SELECT LAST_INSERT_ID()
+			</selectKey> 
+		VALUES (
+			#{bTitle},
+			#{bContent},
+			#{bWriter},
+			now(),
+			0,
+			#{bGroup},
+			#{bOrder}+1,
+			#{bDepth}
+		)
+	</insert>
+	
+	<update id="orderUpdate">
+		UPDATE lc_board SET
+			b_order=b_order+1
+		WHERE b_group=#{bGroup} AND b_order>=#{bOrder} AND b_id!=#{bId} AND b_id!=#{bOrigin}
+	</update>
+	
+	<update id="depthUpdate">
+		UPDATE lc_board SET
+			b_depth=b_depth+1
+		WHERE b_id=#{bId}
+	</update>
+	
+	<select id="boardCount" resultType="int">
+		SELECT COUNT(*) AS count
+		FROM lc_board
+	</select>
+	
+	<select id="boardSearchCount" resultType="int">
+		SELECT	COUNT(*) as count
+		FROM	lc_board
+		where 	1=1
+		<choose>
+			<when test='bSearch == "1"'>
+				AND b_title LIKE #{bKeyword}
+			</when>
+			
+			<when test='bSearch == "2"'>
+				AND ( b_title LIKE #{bKeyword} || b_content LIKE #{bKeyword} )
+			</when>
+			
+			<when test='bSearch == "3"'>
+				AND u_id LIKE #{bKeyword}
+			</when>
+		</choose>
+	</select>
+	
+	<select id="boardSearchList" resultType="Board">
+		SELECT	@rownum:=@rownum-1 AS rownum,
+				b_id as bId,
+				b_title as bTitle,
+				b_content as bContent,
+				b_writer as bWriter,
+				b_datetime as bDateTime,
+				b_group as bGroup,
+				b_order as bOrder,
+				b_depth as bDepth
+		FROM	lc_board ta
+		INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-${pagination.pageNum}+1 FROM lc_board ta)) tb
+		ON		1=1
+		where 	1=1
+		<choose>
+			<when test='search.bSearch == "1"'>
+				AND b_title LIKE #{search.bKeyword}
+			</when>
+			
+			<when test='search.bSearch == "2"'>
+				AND ( b_title LIKE #{search.bKeyword} || b_content LIKE #{search.bKeyword} )
+			</when>
+			
+			<when test='search.bSearch == "3"'>
+				AND u_id LIKE #{search.bKeyword}
+			</when>
+		</choose>
+		ORDER BY b_group DESC, b_order ASC
+		LIMIT ${pagination.pageNum},3
+	</select>
+	
+	<insert id="uploadInsert" parameterType="Upload">
+		INSERT INTO lc_upload(
+			b_id,
+			l_upload,
+			l_filename
+		)
+			<selectKey keyProperty="lId" resultType="Integer">
+				SELECT LAST_INSERT_ID()
+			</selectKey>
+		VALUES (
+			#{bId},
+			#{upload},
+			#{fileName}
+		)
+	</insert>
+	
+	<update id="uploadUpdate">
+		UPDATE lc_upload SET
+			b_id=#{bId}
+		WHERE l_id=#{lId}
+	</update>
+	
+	<select id="uploadList" resultType="Upload">
+		SELECT	l_id as lId
+		FROM	lc_upload ta
+		WHERE	b_id=0
+	</select>
+	
+	<select id="uploadRead" resultType="Upload">
+		SELECT 		l_upload AS upload,
+					l_filename AS fileName
+		FROM 		lc_upload ta
+		WHERE 		b_id=#{bId}
+	</select>
+	
+	<select id="uploadDelete">
+		DELETE			
+		FROM			lc_upload
+		WHERE			b_id = #{bId}
+	</select>
+	
+</mapper>

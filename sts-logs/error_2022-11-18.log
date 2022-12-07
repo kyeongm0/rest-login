@@ -1,0 +1,541 @@
+10:12:26.768 INFO  --- [restartedMain] c.l.example.LStudyRestApplication : Starting LStudyRestApplication on DESKTOP-202F63R with PID 9432 (C:\Users\l6-morning\Documents\work13\rest-login\bin\main started by l6-morning in C:\Users\l6-morning\Documents\work13\rest-login) 
+10:12:26.772 DEBUG --- [restartedMain] c.l.example.LStudyRestApplication : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE 
+10:12:26.772 INFO  --- [restartedMain] c.l.example.LStudyRestApplication : The following profiles are active: local 
+10:12:28.233 DEBUG --- [restartedMain] c.l.example.config.AuthTokenFilter : Filter 'authenticationJwtTokenFilter' configured for use 
+10:12:28.734 INFO  --- [restartedMain] c.l.example.LStudyRestApplication : Started LStudyRestApplication in 2.336 seconds (JVM running for 3.086) 
+10:12:30.572 ERROR --- [http-nio-9000-exec-2] c.l.example.config.JwtUtils : JWT token is expired: JWT expired at 2022-11-17T11:21:46Z. Current time: 2022-11-18T10:12:30Z, a difference of 82244572 milliseconds.  Allowed clock skew: 0 milliseconds. 
+10:12:30.622 INFO  --- [http-nio-9000-exec-2] c.l.e.controller.AuthController : testLoginRequest [username=a, password=123] 
+10:12:30.841 DEBUG --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:30.861 DEBUG --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:30.878 TRACE --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:30.879 TRACE --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:30.880 DEBUG --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:30.884 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:30.884 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:30.885 TRACE --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:30.885 TRACE --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:30.885 TRACE --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:30.885 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:30.975 INFO  --- [http-nio-9000-exec-2] c.l.e.controller.AuthController : ddddUser [username=a, password=$2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, name=관리자, phone=01011111111, uDateTime=null, authorities=[ROLE_ADMIN, ROLE_USER], isAccountNonExpired=true, isAccountNonLocked=true, isCredentialsNonExpired=true, isEnabled=true] 
+10:12:31.019 DEBUG --- [http-nio-9000-exec-4] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:31.019 DEBUG --- [http-nio-9000-exec-4] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:31.022 TRACE --- [http-nio-9000-exec-4] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:31.023 TRACE --- [http-nio-9000-exec-4] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:31.023 DEBUG --- [http-nio-9000-exec-4] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:31.023 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:31.023 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:31.025 TRACE --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:31.025 TRACE --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:31.025 TRACE --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:31.025 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:31.028 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readUser_refresh : ==>  Preparing: SELECT u_id as username, u_name as name, u_phone as phone FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:31.029 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readUser_refresh : ==> Parameters: a(String) 
+10:12:31.045 TRACE --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readUser_refresh : <==    Columns: username, name, phone 
+10:12:31.045 TRACE --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readUser_refresh : <==        Row: a, 관리자, 01011111111 
+10:12:31.046 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readUser_refresh : <==      Total: 1 
+10:12:31.046 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.U.readAuthorities_refresh : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:31.046 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.U.readAuthorities_refresh : ==> Parameters: a(String) 
+10:12:31.052 TRACE --- [http-nio-9000-exec-4] c.l.e.m.U.readAuthorities_refresh : <==    Columns: u_auth 
+10:12:31.052 TRACE --- [http-nio-9000-exec-4] c.l.e.m.U.readAuthorities_refresh : <==        Row: ROLE_ADMIN 
+10:12:31.053 TRACE --- [http-nio-9000-exec-4] c.l.e.m.U.readAuthorities_refresh : <==        Row: ROLE_USER 
+10:12:31.053 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.U.readAuthorities_refresh : <==      Total: 2 
+10:12:36.808 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:36.808 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:36.809 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:36.810 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:36.810 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:36.810 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:36.811 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:36.813 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:36.813 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:36.813 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:36.813 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:36.829 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.userCount : ==>  Preparing: SELECT COUNT(*) AS count FROM lc_user 
+10:12:36.829 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.userCount : ==> Parameters:  
+10:12:36.829 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.userCount : <==    Columns: count 
+10:12:36.830 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.userCount : <==        Row: 10 
+10:12:36.830 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.userCount : <==      Total: 1 
+10:12:36.851 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.selectUserList : ==>  Preparing: SELECT @rownum:=@rownum-1 AS rownum, ta.u_id as username, ta.u_name as name, ta.u_phone as phone, ta.u_datetime as uDateTime, ta.u_isAccountNonExpired as isAccountNonExpired, ta.u_isAccountNonLocked as isAccountNonLocked, ta.u_isCredentialNonExpired as isCredentialsNonExpired, ta.u_isEnabled as isEnabled FROM lc_user ta INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-0+1 FROM lc_user ta)) tb ON 1=1 ORDER BY u_datetime DESC LIMIT 0,3 
+10:12:36.852 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.selectUserList : ==> Parameters:  
+10:12:36.853 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.selectUserList : <==    Columns: rownum, username, name, phone, uDateTime, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:36.854 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.selectUserList : <==        Row: 10.0, qwe, 이엘컴, 01023456789, 2022-11-01 10:01:11, 1, 1, 1, 1 
+10:12:36.855 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.selectUserList : <==        Row: 9.0, asd, 김엘컴, 01065218784, 2022-11-01 09:54:10, 1, 1, 1, 1 
+10:12:36.856 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.selectUserList : <==        Row: 8.0, a, 관리자, 01011111111, 2022-10-19 11:38:09, 1, 1, 1, 1 
+10:12:36.857 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.selectUserList : <==      Total: 3 
+10:12:39.014 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:39.014 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:39.015 TRACE --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:39.016 TRACE --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:39.016 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:39.017 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:39.017 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:39.018 TRACE --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:39.018 TRACE --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:39.018 TRACE --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:39.019 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:39.021 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.BoardMapper.boardCount : ==>  Preparing: SELECT COUNT(*) AS count FROM lc_board 
+10:12:39.021 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.BoardMapper.boardCount : ==> Parameters:  
+10:12:39.022 TRACE --- [http-nio-9000-exec-8] c.l.e.mapper.BoardMapper.boardCount : <==    Columns: count 
+10:12:39.022 TRACE --- [http-nio-9000-exec-8] c.l.e.mapper.BoardMapper.boardCount : <==        Row: 12 
+10:12:39.022 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.BoardMapper.boardCount : <==      Total: 1 
+10:12:39.022 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.BoardMapper.selectBoardList : ==>  Preparing: SELECT @rownum:=@rownum-1 AS rownum, b_id as bId, b_title as bTitle, b_content as bContent, b_writer as bWriter, b_datetime as bDateTime, b_group as bGroup, b_order as bOrder, b_depth as bDepth FROM lc_board ta INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-0+1 FROM lc_board ta)) tb ON 1=1 ORDER BY b_group DESC, b_order ASC LIMIT 0,3 
+10:12:39.023 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.BoardMapper.selectBoardList : ==> Parameters:  
+10:12:39.025 TRACE --- [http-nio-9000-exec-8] c.l.e.m.BoardMapper.selectBoardList : <==    Columns: rownum, bId, bTitle, bContent, bWriter, bDateTime, bGroup, bOrder, bDepth 
+10:12:39.025 TRACE --- [http-nio-9000-exec-8] c.l.e.m.BoardMapper.selectBoardList : <==        Row: 12.0, 140, srehte, <<BLOB>>, 박엘컴, 2022-11-09 10:36:11, 140, 1, 0 
+10:12:39.026 TRACE --- [http-nio-9000-exec-8] c.l.e.m.BoardMapper.selectBoardList : <==        Row: 11.0, 29, eee, <<BLOB>>, 박엘컴, 2022-11-04 12:02:14, 29, 1, 0 
+10:12:39.027 TRACE --- [http-nio-9000-exec-8] c.l.e.m.BoardMapper.selectBoardList : <==        Row: 10.0, 13, zxc, <<BLOB>>, 김자바, 2022-10-07 11:06:15, 13, 1, 0 
+10:12:39.027 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.BoardMapper.selectBoardList : <==      Total: 3 
+10:12:40.258 DEBUG --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:40.258 DEBUG --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:40.259 TRACE --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:40.259 TRACE --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:40.260 DEBUG --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:40.260 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:40.260 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:40.262 TRACE --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:40.262 TRACE --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:40.262 TRACE --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:40.262 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:40.267 INFO  --- [http-nio-9000-exec-10] c.l.e.controller.TestController : ///140 
+10:12:40.267 DEBUG --- [http-nio-9000-exec-10] c.l.e.mapper.BoardMapper.hitUpdate : ==>  Preparing: UPDATE lc_board SET b_brdhit=b_brdhit+1 WHERE b_id=? 
+10:12:40.267 DEBUG --- [http-nio-9000-exec-10] c.l.e.mapper.BoardMapper.hitUpdate : ==> Parameters: 140(Integer) 
+10:12:40.270 DEBUG --- [http-nio-9000-exec-10] c.l.e.mapper.BoardMapper.hitUpdate : <==    Updates: 1 
+10:12:40.271 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.B.selectBoardDetail : ==>  Preparing: SELECT ta.b_id, ta.b_title, ta.b_content, ta.b_writer, ta.u_id, ta.b_datetime, ta.b_group, ta.b_order, ta.b_depth, tb.l_id, tb.l_upload, tb.l_filename FROM lc_board ta LEFT JOIN lc_upload tb ON ta.b_id = tb.b_id WHERE ta.b_id = ? 
+10:12:40.271 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.B.selectBoardDetail : ==> Parameters: 140(Integer) 
+10:12:40.271 TRACE --- [http-nio-9000-exec-10] c.l.e.m.B.selectBoardDetail : <==    Columns: b_id, b_title, b_content, b_writer, u_id, b_datetime, b_group, b_order, b_depth, l_id, l_upload, l_filename 
+10:12:40.272 TRACE --- [http-nio-9000-exec-10] c.l.e.m.B.selectBoardDetail : <==        Row: 140, srehte, <<BLOB>>, 박엘컴, zxc, 2022-11-09 10:36:11, 140, 1, 0, 71, e91c14bc-6469-4b14-8f2a-cfed625c6543.jpg, a0000370_main.jpg 
+10:12:40.274 TRACE --- [http-nio-9000-exec-10] c.l.e.m.B.selectBoardDetail : <==        Row: 140, srehte, <<BLOB>>, 박엘컴, zxc, 2022-11-09 10:36:11, 140, 1, 0, 72, 9401c6a3-0ceb-4241-9263-1c48f22de842.png, main_section02_01.png 
+10:12:40.274 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.B.selectBoardDetail : <==      Total: 2 
+10:12:40.290 DEBUG --- [http-nio-9000-exec-1] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:40.291 DEBUG --- [http-nio-9000-exec-1] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:40.292 TRACE --- [http-nio-9000-exec-1] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:40.292 TRACE --- [http-nio-9000-exec-1] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:40.292 DEBUG --- [http-nio-9000-exec-1] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:40.292 DEBUG --- [http-nio-9000-exec-1] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:40.292 DEBUG --- [http-nio-9000-exec-1] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:40.293 TRACE --- [http-nio-9000-exec-1] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:40.293 TRACE --- [http-nio-9000-exec-1] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:40.293 TRACE --- [http-nio-9000-exec-1] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:40.293 DEBUG --- [http-nio-9000-exec-1] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:40.294 DEBUG --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:40.294 DEBUG --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:40.294 INFO  --- [http-nio-9000-exec-1] c.l.e.controller.TestController : ///140 
+10:12:40.294 DEBUG --- [http-nio-9000-exec-1] c.l.e.mapper.BoardMapper.hitUpdate : ==>  Preparing: UPDATE lc_board SET b_brdhit=b_brdhit+1 WHERE b_id=? 
+10:12:40.294 DEBUG --- [http-nio-9000-exec-1] c.l.e.mapper.BoardMapper.hitUpdate : ==> Parameters: 140(Integer) 
+10:12:40.294 TRACE --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:40.295 TRACE --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:40.295 DEBUG --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:40.295 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:40.296 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:40.296 DEBUG --- [http-nio-9000-exec-1] c.l.e.mapper.BoardMapper.hitUpdate : <==    Updates: 1 
+10:12:40.296 DEBUG --- [http-nio-9000-exec-1] c.l.e.m.B.selectBoardDetail : ==>  Preparing: SELECT ta.b_id, ta.b_title, ta.b_content, ta.b_writer, ta.u_id, ta.b_datetime, ta.b_group, ta.b_order, ta.b_depth, tb.l_id, tb.l_upload, tb.l_filename FROM lc_board ta LEFT JOIN lc_upload tb ON ta.b_id = tb.b_id WHERE ta.b_id = ? 
+10:12:40.296 TRACE --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:40.296 TRACE --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:40.296 DEBUG --- [http-nio-9000-exec-1] c.l.e.m.B.selectBoardDetail : ==> Parameters: 140(Integer) 
+10:12:40.296 TRACE --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:40.297 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:40.297 TRACE --- [http-nio-9000-exec-1] c.l.e.m.B.selectBoardDetail : <==    Columns: b_id, b_title, b_content, b_writer, u_id, b_datetime, b_group, b_order, b_depth, l_id, l_upload, l_filename 
+10:12:40.297 TRACE --- [http-nio-9000-exec-1] c.l.e.m.B.selectBoardDetail : <==        Row: 140, srehte, <<BLOB>>, 박엘컴, zxc, 2022-11-09 10:36:11, 140, 1, 0, 71, e91c14bc-6469-4b14-8f2a-cfed625c6543.jpg, a0000370_main.jpg 
+10:12:40.298 TRACE --- [http-nio-9000-exec-1] c.l.e.m.B.selectBoardDetail : <==        Row: 140, srehte, <<BLOB>>, 박엘컴, zxc, 2022-11-09 10:36:11, 140, 1, 0, 72, 9401c6a3-0ceb-4241-9263-1c48f22de842.png, main_section02_01.png 
+10:12:40.299 DEBUG --- [http-nio-9000-exec-1] c.l.e.m.B.selectBoardDetail : <==      Total: 2 
+10:12:40.299 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.CommentMapper.commentCount : ==>  Preparing: SELECT COUNT(*) AS count FROM lc_comment WHERE b_id=? 
+10:12:40.299 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.CommentMapper.commentCount : ==> Parameters: 140(Integer) 
+10:12:40.300 TRACE --- [http-nio-9000-exec-3] c.l.e.m.CommentMapper.commentCount : <==    Columns: count 
+10:12:40.300 TRACE --- [http-nio-9000-exec-3] c.l.e.m.CommentMapper.commentCount : <==        Row: 0 
+10:12:40.300 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.CommentMapper.commentCount : <==      Total: 1 
+10:12:40.300 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.C.selectCommentList : ==>  Preparing: SELECT @rownum:=@rownum-1 AS rownum, c_num as cId, c_content as cContent, c_writer as cWriter, c_datetime as cDateTime, c_showreply as cShowReply, c_showedit as cShowEdit, b_id as bId, c_group as cGroup, c_order as cOrder, c_depth as cDepth, u_id as uId FROM lc_comment ta INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-0+1 FROM lc_comment ta)) tb ON 1=1 WHERE b_id=? ORDER BY c_group DESC, c_order ASC LIMIT 0,3 
+10:12:40.301 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.C.selectCommentList : ==> Parameters: 140(Integer) 
+10:12:40.301 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.C.selectCommentList : <==      Total: 0 
+10:12:42.640 DEBUG --- [http-nio-9000-exec-5] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:42.640 DEBUG --- [http-nio-9000-exec-5] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:42.641 TRACE --- [http-nio-9000-exec-5] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:42.641 TRACE --- [http-nio-9000-exec-5] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:42.641 DEBUG --- [http-nio-9000-exec-5] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:42.641 DEBUG --- [http-nio-9000-exec-5] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:42.642 DEBUG --- [http-nio-9000-exec-5] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:42.642 TRACE --- [http-nio-9000-exec-5] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:42.642 TRACE --- [http-nio-9000-exec-5] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:42.642 TRACE --- [http-nio-9000-exec-5] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:42.642 DEBUG --- [http-nio-9000-exec-5] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:42.644 INFO  --- [http-nio-9000-exec-5] c.l.e.controller.TestController : delete140 
+10:12:42.644 DEBUG --- [http-nio-9000-exec-5] c.l.e.m.BoardMapper.deleteBoard : ==>  Preparing: DELETE FROM lc_board WHERE b_id = ? 
+10:12:42.644 DEBUG --- [http-nio-9000-exec-5] c.l.e.m.BoardMapper.deleteBoard : ==> Parameters: 140(Integer) 
+10:12:42.646 DEBUG --- [http-nio-9000-exec-5] c.l.e.mapper.BoardMapper.uploadRead : ==>  Preparing: SELECT l_upload AS upload, l_filename AS fileName FROM lc_upload ta WHERE b_id=? 
+10:12:42.646 DEBUG --- [http-nio-9000-exec-5] c.l.e.mapper.BoardMapper.uploadRead : ==> Parameters: 140(Integer) 
+10:12:42.647 TRACE --- [http-nio-9000-exec-5] c.l.e.mapper.BoardMapper.uploadRead : <==    Columns: upload, fileName 
+10:12:42.647 TRACE --- [http-nio-9000-exec-5] c.l.e.mapper.BoardMapper.uploadRead : <==        Row: e91c14bc-6469-4b14-8f2a-cfed625c6543.jpg, a0000370_main.jpg 
+10:12:42.647 TRACE --- [http-nio-9000-exec-5] c.l.e.mapper.BoardMapper.uploadRead : <==        Row: 9401c6a3-0ceb-4241-9263-1c48f22de842.png, main_section02_01.png 
+10:12:42.647 DEBUG --- [http-nio-9000-exec-5] c.l.e.mapper.BoardMapper.uploadRead : <==      Total: 2 
+10:12:42.650 DEBUG --- [http-nio-9000-exec-5] c.l.e.m.BoardMapper.uploadDelete : ==>  Preparing: DELETE FROM lc_upload WHERE b_id = ? 
+10:12:42.650 DEBUG --- [http-nio-9000-exec-5] c.l.e.m.BoardMapper.uploadDelete : ==> Parameters: 140(Integer) 
+10:12:42.666 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:42.667 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:42.667 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:42.668 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:42.668 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:42.668 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:42.669 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:42.669 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:42.670 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:42.670 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:42.670 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:42.671 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.BoardMapper.boardCount : ==>  Preparing: SELECT COUNT(*) AS count FROM lc_board 
+10:12:42.671 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.BoardMapper.boardCount : ==> Parameters:  
+10:12:42.672 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.BoardMapper.boardCount : <==    Columns: count 
+10:12:42.672 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.BoardMapper.boardCount : <==        Row: 11 
+10:12:42.672 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.BoardMapper.boardCount : <==      Total: 1 
+10:12:42.672 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.BoardMapper.selectBoardList : ==>  Preparing: SELECT @rownum:=@rownum-1 AS rownum, b_id as bId, b_title as bTitle, b_content as bContent, b_writer as bWriter, b_datetime as bDateTime, b_group as bGroup, b_order as bOrder, b_depth as bDepth FROM lc_board ta INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-0+1 FROM lc_board ta)) tb ON 1=1 ORDER BY b_group DESC, b_order ASC LIMIT 0,3 
+10:12:42.672 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.BoardMapper.selectBoardList : ==> Parameters:  
+10:12:42.673 TRACE --- [http-nio-9000-exec-6] c.l.e.m.BoardMapper.selectBoardList : <==    Columns: rownum, bId, bTitle, bContent, bWriter, bDateTime, bGroup, bOrder, bDepth 
+10:12:42.673 TRACE --- [http-nio-9000-exec-6] c.l.e.m.BoardMapper.selectBoardList : <==        Row: 11.0, 29, eee, <<BLOB>>, 박엘컴, 2022-11-04 12:02:14, 29, 1, 0 
+10:12:42.674 TRACE --- [http-nio-9000-exec-6] c.l.e.m.BoardMapper.selectBoardList : <==        Row: 10.0, 13, zxc, <<BLOB>>, 김자바, 2022-10-07 11:06:15, 13, 1, 0 
+10:12:42.674 TRACE --- [http-nio-9000-exec-6] c.l.e.m.BoardMapper.selectBoardList : <==        Row: 9.0, 27, tyu, <<BLOB>>, 김자바, 2022-10-11 10:04:47, 13, 2, 1 
+10:12:42.675 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.BoardMapper.selectBoardList : <==      Total: 3 
+10:12:45.112 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:45.112 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:45.113 TRACE --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:45.113 TRACE --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:45.113 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:45.113 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:45.114 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:45.114 TRACE --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:45.114 TRACE --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:45.114 TRACE --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:45.114 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:45.115 INFO  --- [http-nio-9000-exec-8] c.l.e.controller.TestController : ///13 
+10:12:45.115 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.BoardMapper.hitUpdate : ==>  Preparing: UPDATE lc_board SET b_brdhit=b_brdhit+1 WHERE b_id=? 
+10:12:45.116 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.BoardMapper.hitUpdate : ==> Parameters: 13(Integer) 
+10:12:45.118 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.BoardMapper.hitUpdate : <==    Updates: 1 
+10:12:45.118 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.B.selectBoardDetail : ==>  Preparing: SELECT ta.b_id, ta.b_title, ta.b_content, ta.b_writer, ta.u_id, ta.b_datetime, ta.b_group, ta.b_order, ta.b_depth, tb.l_id, tb.l_upload, tb.l_filename FROM lc_board ta LEFT JOIN lc_upload tb ON ta.b_id = tb.b_id WHERE ta.b_id = ? 
+10:12:45.118 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.B.selectBoardDetail : ==> Parameters: 13(Integer) 
+10:12:45.119 TRACE --- [http-nio-9000-exec-8] c.l.e.m.B.selectBoardDetail : <==    Columns: b_id, b_title, b_content, b_writer, u_id, b_datetime, b_group, b_order, b_depth, l_id, l_upload, l_filename 
+10:12:45.120 TRACE --- [http-nio-9000-exec-8] c.l.e.m.B.selectBoardDetail : <==        Row: 13, zxc, <<BLOB>>, 김자바, z, 2022-10-07 11:06:15, 13, 1, 0, null, null, null 
+10:12:45.121 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.B.selectBoardDetail : <==      Total: 1 
+10:12:45.136 DEBUG --- [http-nio-9000-exec-9] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:45.137 DEBUG --- [http-nio-9000-exec-9] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:45.137 TRACE --- [http-nio-9000-exec-9] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:45.138 TRACE --- [http-nio-9000-exec-9] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:45.138 DEBUG --- [http-nio-9000-exec-9] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:45.138 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:45.138 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:45.139 TRACE --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:45.139 TRACE --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:45.139 TRACE --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:45.139 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:45.140 INFO  --- [http-nio-9000-exec-9] c.l.e.controller.TestController : ///13 
+10:12:45.140 DEBUG --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:45.140 DEBUG --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:45.141 TRACE --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:45.141 DEBUG --- [http-nio-9000-exec-9] c.l.e.mapper.BoardMapper.hitUpdate : ==>  Preparing: UPDATE lc_board SET b_brdhit=b_brdhit+1 WHERE b_id=? 
+10:12:45.141 TRACE --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:45.141 DEBUG --- [http-nio-9000-exec-9] c.l.e.mapper.BoardMapper.hitUpdate : ==> Parameters: 13(Integer) 
+10:12:45.141 DEBUG --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:45.141 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:45.141 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:45.142 TRACE --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:45.142 TRACE --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:45.142 TRACE --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:45.142 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:45.143 DEBUG --- [http-nio-9000-exec-9] c.l.e.mapper.BoardMapper.hitUpdate : <==    Updates: 1 
+10:12:45.143 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.CommentMapper.commentCount : ==>  Preparing: SELECT COUNT(*) AS count FROM lc_comment WHERE b_id=? 
+10:12:45.143 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.B.selectBoardDetail : ==>  Preparing: SELECT ta.b_id, ta.b_title, ta.b_content, ta.b_writer, ta.u_id, ta.b_datetime, ta.b_group, ta.b_order, ta.b_depth, tb.l_id, tb.l_upload, tb.l_filename FROM lc_board ta LEFT JOIN lc_upload tb ON ta.b_id = tb.b_id WHERE ta.b_id = ? 
+10:12:45.144 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.B.selectBoardDetail : ==> Parameters: 13(Integer) 
+10:12:45.144 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.CommentMapper.commentCount : ==> Parameters: 13(Integer) 
+10:12:45.144 TRACE --- [http-nio-9000-exec-9] c.l.e.m.B.selectBoardDetail : <==    Columns: b_id, b_title, b_content, b_writer, u_id, b_datetime, b_group, b_order, b_depth, l_id, l_upload, l_filename 
+10:12:45.145 TRACE --- [http-nio-9000-exec-9] c.l.e.m.B.selectBoardDetail : <==        Row: 13, zxc, <<BLOB>>, 김자바, z, 2022-10-07 11:06:15, 13, 1, 0, null, null, null 
+10:12:45.145 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.B.selectBoardDetail : <==      Total: 1 
+10:12:45.146 TRACE --- [http-nio-9000-exec-2] c.l.e.m.CommentMapper.commentCount : <==    Columns: count 
+10:12:45.146 TRACE --- [http-nio-9000-exec-2] c.l.e.m.CommentMapper.commentCount : <==        Row: 8 
+10:12:45.146 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.CommentMapper.commentCount : <==      Total: 1 
+10:12:45.146 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.C.selectCommentList : ==>  Preparing: SELECT @rownum:=@rownum-1 AS rownum, c_num as cId, c_content as cContent, c_writer as cWriter, c_datetime as cDateTime, c_showreply as cShowReply, c_showedit as cShowEdit, b_id as bId, c_group as cGroup, c_order as cOrder, c_depth as cDepth, u_id as uId FROM lc_comment ta INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-0+1 FROM lc_comment ta)) tb ON 1=1 WHERE b_id=? ORDER BY c_group DESC, c_order ASC LIMIT 0,3 
+10:12:45.147 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.C.selectCommentList : ==> Parameters: 13(Integer) 
+10:12:45.148 TRACE --- [http-nio-9000-exec-2] c.l.e.m.C.selectCommentList : <==    Columns: rownum, cId, cContent, cWriter, cDateTime, cShowReply, cShowEdit, bId, cGroup, cOrder, cDepth, uId 
+10:12:45.149 TRACE --- [http-nio-9000-exec-2] c.l.e.m.C.selectCommentList : <==        Row: 10.0, 48, 222, 김자바, 2022-10-14 09:26:31, 0, 0, 13, 48, 1, 0, z 
+10:12:45.150 TRACE --- [http-nio-9000-exec-2] c.l.e.m.C.selectCommentList : <==        Row: 9.0, 61, test3, 김자바, 2022-10-18 09:08:12, 0, 0, 13, 48, 3, 1, z 
+10:12:45.152 TRACE --- [http-nio-9000-exec-2] c.l.e.m.C.selectCommentList : <==        Row: 8.0, 60, test2, 김자바, 2022-10-17 11:59:31, 0, 0, 13, 48, 5, 1, z 
+10:12:45.153 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.C.selectCommentList : <==      Total: 3 
+10:12:47.463 DEBUG --- [http-nio-9000-exec-1] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:47.463 DEBUG --- [http-nio-9000-exec-1] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:47.464 TRACE --- [http-nio-9000-exec-1] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:47.464 TRACE --- [http-nio-9000-exec-1] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:47.465 DEBUG --- [http-nio-9000-exec-1] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:47.465 DEBUG --- [http-nio-9000-exec-1] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:47.466 DEBUG --- [http-nio-9000-exec-1] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:47.466 TRACE --- [http-nio-9000-exec-1] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:47.466 TRACE --- [http-nio-9000-exec-1] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:47.467 TRACE --- [http-nio-9000-exec-1] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:47.467 DEBUG --- [http-nio-9000-exec-1] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:47.468 DEBUG --- [http-nio-9000-exec-1] c.l.e.mapper.BoardMapper.boardCount : ==>  Preparing: SELECT COUNT(*) AS count FROM lc_board 
+10:12:47.468 DEBUG --- [http-nio-9000-exec-1] c.l.e.mapper.BoardMapper.boardCount : ==> Parameters:  
+10:12:47.469 TRACE --- [http-nio-9000-exec-1] c.l.e.mapper.BoardMapper.boardCount : <==    Columns: count 
+10:12:47.469 TRACE --- [http-nio-9000-exec-1] c.l.e.mapper.BoardMapper.boardCount : <==        Row: 11 
+10:12:47.469 DEBUG --- [http-nio-9000-exec-1] c.l.e.mapper.BoardMapper.boardCount : <==      Total: 1 
+10:12:47.470 DEBUG --- [http-nio-9000-exec-1] c.l.e.m.BoardMapper.selectBoardList : ==>  Preparing: SELECT @rownum:=@rownum-1 AS rownum, b_id as bId, b_title as bTitle, b_content as bContent, b_writer as bWriter, b_datetime as bDateTime, b_group as bGroup, b_order as bOrder, b_depth as bDepth FROM lc_board ta INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-0+1 FROM lc_board ta)) tb ON 1=1 ORDER BY b_group DESC, b_order ASC LIMIT 0,3 
+10:12:47.470 DEBUG --- [http-nio-9000-exec-1] c.l.e.m.BoardMapper.selectBoardList : ==> Parameters:  
+10:12:47.471 TRACE --- [http-nio-9000-exec-1] c.l.e.m.BoardMapper.selectBoardList : <==    Columns: rownum, bId, bTitle, bContent, bWriter, bDateTime, bGroup, bOrder, bDepth 
+10:12:47.472 TRACE --- [http-nio-9000-exec-1] c.l.e.m.BoardMapper.selectBoardList : <==        Row: 11.0, 29, eee, <<BLOB>>, 박엘컴, 2022-11-04 12:02:14, 29, 1, 0 
+10:12:47.472 TRACE --- [http-nio-9000-exec-1] c.l.e.m.BoardMapper.selectBoardList : <==        Row: 10.0, 13, zxc, <<BLOB>>, 김자바, 2022-10-07 11:06:15, 13, 1, 0 
+10:12:47.473 TRACE --- [http-nio-9000-exec-1] c.l.e.m.BoardMapper.selectBoardList : <==        Row: 9.0, 27, tyu, <<BLOB>>, 김자바, 2022-10-11 10:04:47, 13, 2, 1 
+10:12:47.473 DEBUG --- [http-nio-9000-exec-1] c.l.e.m.BoardMapper.selectBoardList : <==      Total: 3 
+10:12:48.199 DEBUG --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:48.199 DEBUG --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:48.200 TRACE --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:48.200 TRACE --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:48.201 DEBUG --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:48.201 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:48.201 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:48.204 TRACE --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:48.204 TRACE --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:48.204 TRACE --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:48.204 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:48.205 INFO  --- [http-nio-9000-exec-3] c.l.e.controller.TestController : ///140 
+10:12:48.205 DEBUG --- [http-nio-9000-exec-3] c.l.e.mapper.BoardMapper.hitUpdate : ==>  Preparing: UPDATE lc_board SET b_brdhit=b_brdhit+1 WHERE b_id=? 
+10:12:48.205 DEBUG --- [http-nio-9000-exec-3] c.l.e.mapper.BoardMapper.hitUpdate : ==> Parameters: 140(Integer) 
+10:12:48.206 DEBUG --- [http-nio-9000-exec-4] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:48.206 DEBUG --- [http-nio-9000-exec-3] c.l.e.mapper.BoardMapper.hitUpdate : <==    Updates: 0 
+10:12:48.206 DEBUG --- [http-nio-9000-exec-4] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:48.207 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.B.selectBoardDetail : ==>  Preparing: SELECT ta.b_id, ta.b_title, ta.b_content, ta.b_writer, ta.u_id, ta.b_datetime, ta.b_group, ta.b_order, ta.b_depth, tb.l_id, tb.l_upload, tb.l_filename FROM lc_board ta LEFT JOIN lc_upload tb ON ta.b_id = tb.b_id WHERE ta.b_id = ? 
+10:12:48.207 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.B.selectBoardDetail : ==> Parameters: 140(Integer) 
+10:12:48.208 TRACE --- [http-nio-9000-exec-4] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:48.209 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.B.selectBoardDetail : <==      Total: 0 
+10:12:48.209 TRACE --- [http-nio-9000-exec-4] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:48.209 DEBUG --- [http-nio-9000-exec-4] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:48.209 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:48.209 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:48.213 TRACE --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:48.213 TRACE --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:48.213 TRACE --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:48.213 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:48.214 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.CommentMapper.commentCount : ==>  Preparing: SELECT COUNT(*) AS count FROM lc_comment WHERE b_id=? 
+10:12:48.215 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.CommentMapper.commentCount : ==> Parameters: 140(Integer) 
+10:12:48.215 TRACE --- [http-nio-9000-exec-4] c.l.e.m.CommentMapper.commentCount : <==    Columns: count 
+10:12:48.215 TRACE --- [http-nio-9000-exec-4] c.l.e.m.CommentMapper.commentCount : <==        Row: 0 
+10:12:48.215 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.CommentMapper.commentCount : <==      Total: 1 
+10:12:48.216 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.C.selectCommentList : ==>  Preparing: SELECT @rownum:=@rownum-1 AS rownum, c_num as cId, c_content as cContent, c_writer as cWriter, c_datetime as cDateTime, c_showreply as cShowReply, c_showedit as cShowEdit, b_id as bId, c_group as cGroup, c_order as cOrder, c_depth as cDepth, u_id as uId FROM lc_comment ta INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-0+1 FROM lc_comment ta)) tb ON 1=1 WHERE b_id=? ORDER BY c_group DESC, c_order ASC LIMIT 0,3 
+10:12:48.216 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.C.selectCommentList : ==> Parameters: 140(Integer) 
+10:12:48.217 DEBUG --- [http-nio-9000-exec-4] c.l.e.m.C.selectCommentList : <==      Total: 0 
+10:12:49.354 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:49.354 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:49.355 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:49.355 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:49.355 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:49.355 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:49.355 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:49.357 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:49.357 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:49.357 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:49.357 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:49.361 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : ==>  Preparing: SELECT ta.u_id username, ta.u_name name, ta.u_phone phone, tb.u_auth auth FROM lc_user ta LEFT join ( SELECT ta.u_id, GROUP_CONCAT(ta.u_auth SEPARATOR ",") u_auth FROM lc_auth ta GROUP BY ta.u_id ) tb ON ta.u_id = tb.u_id ORDER BY u_datetime DESC 
+10:12:49.361 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : ==> Parameters:  
+10:12:49.375 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : <==    Columns: username, name, phone, auth 
+10:12:49.375 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : <==        Row: qwe, 이엘컴, 01023456789, <<BLOB>> 
+10:12:49.376 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : <==        Row: asd, 김엘컴, 01065218784, <<BLOB>> 
+10:12:49.376 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : <==        Row: a, 관리자, 01011111111, <<BLOB>> 
+10:12:49.376 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : <==        Row: zxc, 박엘컴, 01098534866, <<BLOB>> 
+10:12:49.376 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : <==        Row: z, 김자바, 01066842697, <<BLOB>> 
+10:12:49.376 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : <==        Row: darius, 다리우스1, 01020204982, <<BLOB>> 
+10:12:49.376 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : <==        Row: graves, 그레이브즈, 01030203020, <<BLOB>> 
+10:12:49.376 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : <==        Row: leesin, 리신, 01000000000, <<BLOB>> 
+10:12:49.376 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : <==        Row: saram, 엄준식, 01044444444, <<BLOB>> 
+10:12:49.376 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : <==        Row: tontonjeong, 톤톤, 01012345678, <<BLOB>> 
+10:12:49.376 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.read_user_list : <==      Total: 10 
+10:12:49.377 INFO  --- [http-nio-9000-exec-6] c.l.e.controller.AdminController : [UserInfo [username=qwe, password=null, name=이엘컴, phone=01023456789, authorities=[ROLE_USER], auth=null], UserInfo [username=asd, password=null, name=김엘컴, phone=01065218784, authorities=[ROLE_USER], auth=null], UserInfo [username=a, password=null, name=관리자, phone=01011111111, authorities=[ROLE_USER, ROLE_ADMIN], auth=null], UserInfo [username=zxc, password=null, name=박엘컴, phone=01098534866, authorities=[ROLE_USER], auth=null], UserInfo [username=z, password=null, name=김자바, phone=01066842697, authorities=[ROLE_USER], auth=null], UserInfo [username=darius, password=null, name=다리우스1, phone=01020204982, authorities=[ROLE_USER], auth=null], UserInfo [username=graves, password=null, name=그레이브즈, phone=01030203020, authorities=[ROLE_USER], auth=null], UserInfo [username=leesin, password=null, name=리신, phone=01000000000, authorities=[ROLE_USER], auth=null], UserInfo [username=saram, password=null, name=엄준식, phone=01044444444, authorities=[ROLE_USER], auth=null], UserInfo [username=tontonjeong, password=null, name=톤톤, phone=01012345678, authorities=[ROLE_USER], auth=null]] 
+10:12:50.984 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:12:50.984 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:12:50.985 TRACE --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:12:50.985 TRACE --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:12:50.985 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:12:50.986 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:12:50.986 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:12:50.987 TRACE --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:12:50.987 TRACE --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:12:50.987 TRACE --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:12:50.987 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:12:50.988 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.SurveyMapper.surveyCount : ==>  Preparing: SELECT COUNT(*) AS count FROM lc_survey 
+10:12:50.988 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.SurveyMapper.surveyCount : ==> Parameters:  
+10:12:50.989 TRACE --- [http-nio-9000-exec-8] c.l.e.m.SurveyMapper.surveyCount : <==    Columns: count 
+10:12:50.989 TRACE --- [http-nio-9000-exec-8] c.l.e.m.SurveyMapper.surveyCount : <==        Row: 2 
+10:12:50.989 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.SurveyMapper.surveyCount : <==      Total: 1 
+10:12:50.989 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.S.selectSurveyList : ==>  Preparing: SELECT @rownum:=@rownum-1 AS rownum, s_id as sId, s_title as sTitle, s_subtitle as sSubTitle, s_writer as sWriter, s_datetime as sDateTime, u_id as uId FROM lc_survey ta INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-0+1 FROM lc_survey ta)) tb ON 1=1 ORDER BY s_datetime DESC LIMIT 0,3 
+10:12:50.989 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.S.selectSurveyList : ==> Parameters:  
+10:12:50.990 TRACE --- [http-nio-9000-exec-8] c.l.e.m.S.selectSurveyList : <==    Columns: rownum, sId, sTitle, sSubTitle, sWriter, sDateTime, uId 
+10:12:50.990 TRACE --- [http-nio-9000-exec-8] c.l.e.m.S.selectSurveyList : <==        Row: 2, 22, Survey2, <<BLOB>>, 박엘컴, 2022-11-07 09:39:53, zxc 
+10:12:50.991 TRACE --- [http-nio-9000-exec-8] c.l.e.m.S.selectSurveyList : <==        Row: 1, 9, Survey, <<BLOB>>, 김자바, 2022-10-27 10:46:08, z 
+10:12:50.991 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.S.selectSurveyList : <==      Total: 2 
+10:13:20.821 DEBUG --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:13:20.821 DEBUG --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:13:20.822 TRACE --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:13:20.822 TRACE --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:13:20.822 DEBUG --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:13:20.822 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:13:20.822 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:13:20.823 TRACE --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:13:20.823 TRACE --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:13:20.823 TRACE --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:13:20.823 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:13:20.824 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.SurveyMapper.surveyCount : ==>  Preparing: SELECT COUNT(*) AS count FROM lc_survey 
+10:13:20.824 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.SurveyMapper.surveyCount : ==> Parameters:  
+10:13:20.825 TRACE --- [http-nio-9000-exec-10] c.l.e.m.SurveyMapper.surveyCount : <==    Columns: count 
+10:13:20.825 TRACE --- [http-nio-9000-exec-10] c.l.e.m.SurveyMapper.surveyCount : <==        Row: 2 
+10:13:20.825 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.SurveyMapper.surveyCount : <==      Total: 1 
+10:13:20.825 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyList : ==>  Preparing: SELECT @rownum:=@rownum-1 AS rownum, s_id as sId, s_title as sTitle, s_subtitle as sSubTitle, s_writer as sWriter, s_datetime as sDateTime, u_id as uId FROM lc_survey ta INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-0+1 FROM lc_survey ta)) tb ON 1=1 ORDER BY s_datetime DESC LIMIT 0,3 
+10:13:20.825 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyList : ==> Parameters:  
+10:13:20.826 TRACE --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyList : <==    Columns: rownum, sId, sTitle, sSubTitle, sWriter, sDateTime, uId 
+10:13:20.826 TRACE --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyList : <==        Row: 2, 22, Survey2, <<BLOB>>, 박엘컴, 2022-11-07 09:39:53, zxc 
+10:13:20.826 TRACE --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyList : <==        Row: 1, 9, Survey, <<BLOB>>, 김자바, 2022-10-27 10:46:08, z 
+10:13:20.827 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyList : <==      Total: 2 
+10:13:28.590 DEBUG --- [http-nio-9000-exec-9] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:13:28.590 DEBUG --- [http-nio-9000-exec-9] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:13:28.591 TRACE --- [http-nio-9000-exec-9] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:13:28.591 TRACE --- [http-nio-9000-exec-9] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:13:28.591 DEBUG --- [http-nio-9000-exec-9] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:13:28.591 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:13:28.591 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:13:28.591 TRACE --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:13:28.591 TRACE --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:13:28.592 TRACE --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:13:28.592 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:13:28.592 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readUser_refresh : ==>  Preparing: SELECT u_id as username, u_name as name, u_phone as phone FROM lc_user WHERE 1=1 AND u_id = ? 
+10:13:28.593 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readUser_refresh : ==> Parameters: a(String) 
+10:13:28.593 TRACE --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readUser_refresh : <==    Columns: username, name, phone 
+10:13:28.593 TRACE --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readUser_refresh : <==        Row: a, 관리자, 01011111111 
+10:13:28.593 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.UserMapper.readUser_refresh : <==      Total: 1 
+10:13:28.593 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.U.readAuthorities_refresh : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:13:28.594 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.U.readAuthorities_refresh : ==> Parameters: a(String) 
+10:13:28.594 TRACE --- [http-nio-9000-exec-9] c.l.e.m.U.readAuthorities_refresh : <==    Columns: u_auth 
+10:13:28.594 TRACE --- [http-nio-9000-exec-9] c.l.e.m.U.readAuthorities_refresh : <==        Row: ROLE_ADMIN 
+10:13:28.594 TRACE --- [http-nio-9000-exec-9] c.l.e.m.U.readAuthorities_refresh : <==        Row: ROLE_USER 
+10:13:28.594 DEBUG --- [http-nio-9000-exec-9] c.l.e.m.U.readAuthorities_refresh : <==      Total: 2 
+10:13:28.652 DEBUG --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:13:28.652 DEBUG --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:13:28.653 TRACE --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:13:28.653 TRACE --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:13:28.653 DEBUG --- [http-nio-9000-exec-2] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:13:28.653 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:13:28.653 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:13:28.654 TRACE --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:13:28.654 TRACE --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:13:28.654 TRACE --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:13:28.654 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:13:28.655 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.SurveyMapper.surveyCount : ==>  Preparing: SELECT COUNT(*) AS count FROM lc_survey 
+10:13:28.655 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.SurveyMapper.surveyCount : ==> Parameters:  
+10:13:28.655 TRACE --- [http-nio-9000-exec-2] c.l.e.m.SurveyMapper.surveyCount : <==    Columns: count 
+10:13:28.656 TRACE --- [http-nio-9000-exec-2] c.l.e.m.SurveyMapper.surveyCount : <==        Row: 2 
+10:13:28.656 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.SurveyMapper.surveyCount : <==      Total: 1 
+10:13:28.656 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.S.selectSurveyList : ==>  Preparing: SELECT @rownum:=@rownum-1 AS rownum, s_id as sId, s_title as sTitle, s_subtitle as sSubTitle, s_writer as sWriter, s_datetime as sDateTime, u_id as uId FROM lc_survey ta INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-0+1 FROM lc_survey ta)) tb ON 1=1 ORDER BY s_datetime DESC LIMIT 0,3 
+10:13:28.656 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.S.selectSurveyList : ==> Parameters:  
+10:13:28.657 TRACE --- [http-nio-9000-exec-2] c.l.e.m.S.selectSurveyList : <==    Columns: rownum, sId, sTitle, sSubTitle, sWriter, sDateTime, uId 
+10:13:28.657 TRACE --- [http-nio-9000-exec-2] c.l.e.m.S.selectSurveyList : <==        Row: 2, 22, Survey2, <<BLOB>>, 박엘컴, 2022-11-07 09:39:53, zxc 
+10:13:28.658 TRACE --- [http-nio-9000-exec-2] c.l.e.m.S.selectSurveyList : <==        Row: 1, 9, Survey, <<BLOB>>, 김자바, 2022-10-27 10:46:08, z 
+10:13:28.658 DEBUG --- [http-nio-9000-exec-2] c.l.e.m.S.selectSurveyList : <==      Total: 2 
+10:13:44.175 DEBUG --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:13:44.176 DEBUG --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:13:44.177 TRACE --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:13:44.177 TRACE --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:13:44.177 DEBUG --- [http-nio-9000-exec-3] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:13:44.177 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:13:44.177 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:13:44.178 TRACE --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:13:44.178 TRACE --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:13:44.178 TRACE --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:13:44.178 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:13:44.179 INFO  --- [http-nio-9000-exec-3] c.l.e.controller.TestController : ///22 
+10:13:44.180 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.S.selectSurveyDetail : ==>  Preparing: SELECT td.s_id, td.s_title, td.s_subtitle, tc.q_id, tc.q_title, tc.q_type, tc.i_item, tc.i_id FROM lc_survey td LEFT JOIN ((SELECT ta.q_id AS q_id, ta.q_title AS q_title, ta.q_type AS q_type, ta.s_id AS s_id, tb.i_item AS i_item, tb.i_id AS i_id FROM lc_question ta LEFT JOIN lc_item tb ON ta.q_id=tb.q_id)) tc ON td.s_id=tc.s_id WHERE td.s_id=? 
+10:13:44.180 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.S.selectSurveyDetail : ==> Parameters: 22(Integer) 
+10:13:44.181 TRACE --- [http-nio-9000-exec-3] c.l.e.m.S.selectSurveyDetail : <==    Columns: s_id, s_title, s_subtitle, q_id, q_title, q_type, i_item, i_id 
+10:13:44.181 TRACE --- [http-nio-9000-exec-3] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 36, age, 1, 10, 54 
+10:13:44.181 TRACE --- [http-nio-9000-exec-3] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 36, age, 1, 20, 55 
+10:13:44.181 TRACE --- [http-nio-9000-exec-3] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 36, age, 1, 30, 56 
+10:13:44.181 TRACE --- [http-nio-9000-exec-3] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 36, age, 1, 40, 57 
+10:13:44.181 TRACE --- [http-nio-9000-exec-3] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 37, job, 1, programmer, 58 
+10:13:44.182 TRACE --- [http-nio-9000-exec-3] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 37, job, 1, police, 59 
+10:13:44.182 TRACE --- [http-nio-9000-exec-3] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 37, job, 1, teacher, 60 
+10:13:44.182 TRACE --- [http-nio-9000-exec-3] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 37, job, 1, etc, 61 
+10:13:44.183 DEBUG --- [http-nio-9000-exec-3] c.l.e.m.S.selectSurveyDetail : <==      Total: 8 
+10:14:59.814 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:14:59.814 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : ==> Parameters: a(String) 
+10:14:59.815 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:14:59.815 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==        Row: a, $2a$10$PvXyzyy8D4b4PnMS11zayOuHzMmeOWRkh60WZA51gvpQRFKIOvody, 관리자, 01011111111, 1, 1, 1, 1 
+10:14:59.815 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:14:59.815 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:14:59.816 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: a(String) 
+10:14:59.816 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:14:59.817 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+10:14:59.817 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:14:59.817 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==      Total: 2 
+10:14:59.818 INFO  --- [http-nio-9000-exec-6] c.l.e.controller.AuthController : testLoginRequest [username=z, password=123] 
+10:14:59.818 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:14:59.818 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : ==> Parameters: z(String) 
+10:14:59.818 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:14:59.818 TRACE --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==        Row: z, $2a$10$Np03E8Ri0yCTQJaFWjNMAuVcKlYvjSOyrLVWpvAtDiC4QQ60./eZ6, 김자바, 01066842697, 1, 1, 1, 1 
+10:14:59.819 DEBUG --- [http-nio-9000-exec-6] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:14:59.819 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:14:59.819 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: z(String) 
+10:14:59.819 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:14:59.819 TRACE --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:14:59.820 DEBUG --- [http-nio-9000-exec-6] c.l.e.m.UserMapper.readAuthorities : <==      Total: 1 
+10:14:59.895 INFO  --- [http-nio-9000-exec-6] c.l.e.controller.AuthController : ddddUser [username=z, password=$2a$10$Np03E8Ri0yCTQJaFWjNMAuVcKlYvjSOyrLVWpvAtDiC4QQ60./eZ6, name=김자바, phone=01066842697, uDateTime=null, authorities=[ROLE_USER], isAccountNonExpired=true, isAccountNonLocked=true, isCredentialsNonExpired=true, isEnabled=true] 
+10:14:59.900 DEBUG --- [http-nio-9000-exec-7] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:14:59.901 DEBUG --- [http-nio-9000-exec-7] c.l.e.mapper.UserMapper.readUser : ==> Parameters: z(String) 
+10:14:59.901 TRACE --- [http-nio-9000-exec-7] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:14:59.902 TRACE --- [http-nio-9000-exec-7] c.l.e.mapper.UserMapper.readUser : <==        Row: z, $2a$10$Np03E8Ri0yCTQJaFWjNMAuVcKlYvjSOyrLVWpvAtDiC4QQ60./eZ6, 김자바, 01066842697, 1, 1, 1, 1 
+10:14:59.902 DEBUG --- [http-nio-9000-exec-7] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:14:59.902 DEBUG --- [http-nio-9000-exec-7] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:14:59.902 DEBUG --- [http-nio-9000-exec-7] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: z(String) 
+10:14:59.903 TRACE --- [http-nio-9000-exec-7] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:14:59.903 TRACE --- [http-nio-9000-exec-7] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:14:59.903 DEBUG --- [http-nio-9000-exec-7] c.l.e.m.UserMapper.readAuthorities : <==      Total: 1 
+10:14:59.904 DEBUG --- [http-nio-9000-exec-7] c.l.e.m.UserMapper.readUser_refresh : ==>  Preparing: SELECT u_id as username, u_name as name, u_phone as phone FROM lc_user WHERE 1=1 AND u_id = ? 
+10:14:59.904 DEBUG --- [http-nio-9000-exec-7] c.l.e.m.UserMapper.readUser_refresh : ==> Parameters: z(String) 
+10:14:59.905 TRACE --- [http-nio-9000-exec-7] c.l.e.m.UserMapper.readUser_refresh : <==    Columns: username, name, phone 
+10:14:59.905 TRACE --- [http-nio-9000-exec-7] c.l.e.m.UserMapper.readUser_refresh : <==        Row: z, 김자바, 01066842697 
+10:14:59.905 DEBUG --- [http-nio-9000-exec-7] c.l.e.m.UserMapper.readUser_refresh : <==      Total: 1 
+10:14:59.905 DEBUG --- [http-nio-9000-exec-7] c.l.e.m.U.readAuthorities_refresh : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:14:59.906 DEBUG --- [http-nio-9000-exec-7] c.l.e.m.U.readAuthorities_refresh : ==> Parameters: z(String) 
+10:14:59.906 TRACE --- [http-nio-9000-exec-7] c.l.e.m.U.readAuthorities_refresh : <==    Columns: u_auth 
+10:14:59.906 TRACE --- [http-nio-9000-exec-7] c.l.e.m.U.readAuthorities_refresh : <==        Row: ROLE_USER 
+10:14:59.906 DEBUG --- [http-nio-9000-exec-7] c.l.e.m.U.readAuthorities_refresh : <==      Total: 1 
+10:15:01.143 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:15:01.143 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : ==> Parameters: z(String) 
+10:15:01.143 TRACE --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:15:01.143 TRACE --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : <==        Row: z, $2a$10$Np03E8Ri0yCTQJaFWjNMAuVcKlYvjSOyrLVWpvAtDiC4QQ60./eZ6, 김자바, 01066842697, 1, 1, 1, 1 
+10:15:01.144 DEBUG --- [http-nio-9000-exec-8] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:15:01.144 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:15:01.144 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: z(String) 
+10:15:01.144 TRACE --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:15:01.144 TRACE --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:15:01.144 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.UserMapper.readAuthorities : <==      Total: 1 
+10:15:01.145 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.SurveyMapper.surveyCount : ==>  Preparing: SELECT COUNT(*) AS count FROM lc_survey 
+10:15:01.146 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.SurveyMapper.surveyCount : ==> Parameters:  
+10:15:01.146 TRACE --- [http-nio-9000-exec-8] c.l.e.m.SurveyMapper.surveyCount : <==    Columns: count 
+10:15:01.146 TRACE --- [http-nio-9000-exec-8] c.l.e.m.SurveyMapper.surveyCount : <==        Row: 2 
+10:15:01.146 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.SurveyMapper.surveyCount : <==      Total: 1 
+10:15:01.147 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.S.selectSurveyList : ==>  Preparing: SELECT @rownum:=@rownum-1 AS rownum, s_id as sId, s_title as sTitle, s_subtitle as sSubTitle, s_writer as sWriter, s_datetime as sDateTime, u_id as uId FROM lc_survey ta INNER JOIN (SELECT @rownum:=(SELECT COUNT(*)-0+1 FROM lc_survey ta)) tb ON 1=1 ORDER BY s_datetime DESC LIMIT 0,3 
+10:15:01.147 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.S.selectSurveyList : ==> Parameters:  
+10:15:01.148 TRACE --- [http-nio-9000-exec-8] c.l.e.m.S.selectSurveyList : <==    Columns: rownum, sId, sTitle, sSubTitle, sWriter, sDateTime, uId 
+10:15:01.148 TRACE --- [http-nio-9000-exec-8] c.l.e.m.S.selectSurveyList : <==        Row: 2, 22, Survey2, <<BLOB>>, 박엘컴, 2022-11-07 09:39:53, zxc 
+10:15:01.148 TRACE --- [http-nio-9000-exec-8] c.l.e.m.S.selectSurveyList : <==        Row: 1, 9, Survey, <<BLOB>>, 김자바, 2022-10-27 10:46:08, z 
+10:15:01.149 DEBUG --- [http-nio-9000-exec-8] c.l.e.m.S.selectSurveyList : <==      Total: 2 
+10:15:04.846 DEBUG --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT u_id as username, u_password as password, u_name as name, u_phone as phone, u_isAccountNonExpired as isAccountNonExpired, u_isAccountNonLocked as isAccountNonLocked, u_isCredentialNonExpired as isCredentialsNonExpired, u_isEnabled as isEnabled FROM lc_user WHERE 1=1 AND u_id = ? 
+10:15:04.846 DEBUG --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : ==> Parameters: z(String) 
+10:15:04.847 TRACE --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+10:15:04.847 TRACE --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : <==        Row: z, $2a$10$Np03E8Ri0yCTQJaFWjNMAuVcKlYvjSOyrLVWpvAtDiC4QQ60./eZ6, 김자바, 01066842697, 1, 1, 1, 1 
+10:15:04.847 DEBUG --- [http-nio-9000-exec-10] c.l.e.mapper.UserMapper.readUser : <==      Total: 1 
+10:15:04.847 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT u_auth FROM lc_auth WHERE 1=1 AND u_id = ? ORDER BY u_auth asc 
+10:15:04.847 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : ==> Parameters: z(String) 
+10:15:04.848 TRACE --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : <==    Columns: u_auth 
+10:15:04.848 TRACE --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : <==        Row: ROLE_USER 
+10:15:04.848 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.UserMapper.readAuthorities : <==      Total: 1 
+10:15:04.849 INFO  --- [http-nio-9000-exec-10] c.l.e.controller.TestController : ///22 
+10:15:04.849 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyDetail : ==>  Preparing: SELECT td.s_id, td.s_title, td.s_subtitle, tc.q_id, tc.q_title, tc.q_type, tc.i_item, tc.i_id FROM lc_survey td LEFT JOIN ((SELECT ta.q_id AS q_id, ta.q_title AS q_title, ta.q_type AS q_type, ta.s_id AS s_id, tb.i_item AS i_item, tb.i_id AS i_id FROM lc_question ta LEFT JOIN lc_item tb ON ta.q_id=tb.q_id)) tc ON td.s_id=tc.s_id WHERE td.s_id=? 
+10:15:04.849 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyDetail : ==> Parameters: 22(Integer) 
+10:15:04.850 TRACE --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyDetail : <==    Columns: s_id, s_title, s_subtitle, q_id, q_title, q_type, i_item, i_id 
+10:15:04.850 TRACE --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 36, age, 1, 10, 54 
+10:15:04.850 TRACE --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 36, age, 1, 20, 55 
+10:15:04.850 TRACE --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 36, age, 1, 30, 56 
+10:15:04.851 TRACE --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 36, age, 1, 40, 57 
+10:15:04.851 TRACE --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 37, job, 1, programmer, 58 
+10:15:04.851 TRACE --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 37, job, 1, police, 59 
+10:15:04.851 TRACE --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 37, job, 1, teacher, 60 
+10:15:04.851 TRACE --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyDetail : <==        Row: 22, Survey2, <<BLOB>>, 37, job, 1, etc, 61 
+10:15:04.852 DEBUG --- [http-nio-9000-exec-10] c.l.e.m.S.selectSurveyDetail : <==      Total: 8 

@@ -1,0 +1,4 @@
+09:34:55.536 INFO  --- [Test worker] c.l.e.LStudyRestApplicationTests : Starting LStudyRestApplicationTests on DESKTOP-202F63R with PID 15568 (started by l6-morning in C:\Users\l6-morning\Documents\work13\rest-login) 
+09:34:55.537 DEBUG --- [Test worker] c.l.e.LStudyRestApplicationTests : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE 
+09:34:55.538 INFO  --- [Test worker] c.l.e.LStudyRestApplicationTests : The following profiles are active: local 
+09:34:58.221 INFO  --- [Test worker] c.l.e.LStudyRestApplicationTests : Started LStudyRestApplicationTests in 3.148 seconds (JVM running for 4.327) 

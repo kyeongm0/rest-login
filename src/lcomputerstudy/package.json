@@ -1,0 +1,54 @@
+{
+  "name": "lcomputerstudy",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "dev": "webpack-dev-server --hot --mode development"
+  },
+  "dependencies": {
+    "@vue/cli": "^5.0.8",
+    "axios": "^0.20.0",
+    "chart.js": "^2.9.4",
+    "clean-webpack-plugin": "^4.0.0",
+    "core-js": "^3.6.5",
+    "mini-css-extract-plugin": "^2.6.1",
+    "node-pre-gyp": "^0.15.0",
+    "node-sass": "^8.0.0",
+    "vue": "^2.7.14",
+    "vue-google-charts": "^1.1.0",
+    "vue-moments-ago": "^0.2.0",
+    "vue-router": "^3.5.3",
+    "vuetify": "^2.2.11",
+    "vuex": "^3.4.0",
+    "vuex-persistedstate": "^4.0.0-beta.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@vue/cli-plugin-babel": "^4.4.6",
+    "@vue/cli-plugin-router": "^5.0.8",
+    "@vue/cli-plugin-vuex": "^5.0.8",
+    "@vue/cli-service": "^4.5.0",
+    "babel-loader": "^9.1.0",
+    "css-loader": "^3.4.2",
+    "sass": "^1.19.0",
+    "sass-loader": "^10.4.1",
+    "style-loader": "^1.1.3",
+    "typescript": "^4.9.3",
+    "vue-cli-plugin-vuetify": "^2.5.8",
+    "vue-loader": "^16.8.3",
+    "vue-style-loader": "^4.1.3",
+    "vue-template-compiler": "^2.7.14",
+    "vuetify-loader": "^1.9.2",
+    "webpack": "^5.22.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcomputerstudy.example.mapper.UserMapper">
+	 <!-- 권한 읽기 -->
+    <select id="readAuthorities" parameterType="String" resultType="org.springframework.security.core.authority.SimpleGrantedAuthority">
+    	SELECT			u_auth
+    	FROM			lc_auth
+    	WHERE 			1=1
+    	AND				u_id = #{username}
+    	ORDER BY		u_auth asc
+    </select>
+
+	<!-- 회원 불러오기 -->
+	<select id="readUser" parameterType="String" resultType="User">
+		SELECT			u_id											as 	username,
+								u_password 							as 	password,
+								u_name									as	    name,
+								u_phone									as		phone,
+								u_isAccountNonExpired 		as 	isAccountNonExpired,
+		        				u_isAccountNonLocked 		as 	isAccountNonLocked,
+		        				u_isCredentialNonExpired 	as 	isCredentialsNonExpired,
+		        				u_isEnabled 				as 	isEnabled
+		FROM			lc_user
+		WHERE			1=1
+		AND				u_id	=	#{username}
+	</select>
+	
+	<!-- 회원 불러오기(새로고침) -->
+	<select id="readUser_refresh" parameterType="String" resultType="UserInfo">
+		SELECT			u_id											as 	username,
+								u_name									as	    name,
+								u_phone									as		phone
+		FROM			lc_user 
+		WHERE			1=1
+		AND				u_id	=	#{username}
+	</select>
+	<!-- 권한 읽기(새로고침) -->
+    <select id="readAuthorities_refresh" parameterType="String" resultType="org.springframework.security.core.authority.SimpleGrantedAuthority">
+    	SELECT			u_auth
+    	FROM			lc_auth
+    	WHERE 			1=1
+    	AND				u_id = #{username}
+    	ORDER BY		u_auth asc
+    </select>
+    
+	<!-- 회원 등록 -->
+	<insert id="createUser" parameterType="User">
+		INSERT INTO lc_user (
+			u_id,
+			u_password,
+			u_name,
+			u_phone,
+			u_isAccountNonExpired,
+			u_isAccountNonLocked,
+			u_isCredentialNonExpired,
+			u_isEnabled
+		) VALUES (
+			#{username},
+			#{password},
+			#{name},
+			#{phone},
+			#{isAccountNonExpired},
+			#{isAccountNonLocked},
+			#{isCredentialsNonExpired},
+			#{isEnabled}
+		)
+	</insert>	
+	<!-- 회원 목록 불러오기(admin) -->
+    <select id="read_user_list"  resultType="UserInfo">
+    	SELECT		ta.u_id				username,
+    				ta.u_name			name,
+    				ta.u_phone			phone,
+					tb.u_auth			auth
+		FROM		lc_user ta
+		LEFT join	(
+						SELECT		ta.u_id,
+						GROUP_CONCAT(ta.u_auth SEPARATOR ",") u_auth
+						FROM		lc_auth ta
+						GROUP BY		ta.u_id
+					) tb ON ta.u_id = tb.u_id
+		ORDER BY 	u_datetime DESC
+		    </select>
+	 <!-- 유저 권한 추가 -->
+    <insert id="createAuthority" parameterType="org.springframework.security.core.GrantedAuthority">
+    	INSERT INTO lc_auth (
+    		u_id,
+    		u_auth
+    	) VALUES
+   		<foreach item="authority" index="index" collection="authorities" separator=",">
+   			(#{username}, #{authority.role})
+   		</foreach>
+   		ON DUPLICATE KEY
+			UPDATE
+				u_id = #{username}
+    </insert>
+    
+    <select id="selectUserList" resultType="User">
+		SELECT			@rownum:=@rownum-1 AS rownum,
+						ta.u_id as username,
+						ta.u_name as name,
+						ta.u_phone as phone,
+						ta.u_datetime as uDateTime,
+						ta.u_isAccountNonExpired 		as 	isAccountNonExpired,
+		        		ta.u_isAccountNonLocked 		as 	isAccountNonLocked,
+		        		ta.u_isCredentialNonExpired 	as 	isCredentialsNonExpired,
+		        		ta.u_isEnabled 					as 	isEnabled		        		
+		FROM			lc_user ta
+		INNER JOIN 		(SELECT @rownum:=(SELECT COUNT(*)-${pagination.pageNum}+1 FROM lc_user ta)) tb
+		ON				1=1
+		ORDER BY 		u_datetime DESC
+		LIMIT			${pagination.pageNum},3
+	</select>
+	
+	<select id="selectUserDetail" resultType="User" parameterType="String">
+		SELECT			ta.u_id as username,
+						ta.u_name as name,
+						ta.u_phone as phone,
+						ta.u_datetime as uDateTime,
+						ta.u_isAccountNonExpired 		as 	isAccountNonExpired,
+		        		ta.u_isAccountNonLocked 		as 	isAccountNonLocked,
+		        		ta.u_isCredentialNonExpired 	as 	isCredentialsNonExpired,
+		        		ta.u_isEnabled 				as 	isEnabled,
+		        		ta.u_level as uLevel,
+		        		ta.u_grade as uGrade
+		FROM			lc_user ta
+		WHERE			ta.u_id = #{username}
+	</select>
+	
+	<update id="selectUserEdit">
+		UPDATE lc_user SET
+			u_name=#{name},
+			u_phone=#{phone}
+		WHERE u_id=#{username}
+	</update>
+	
+	<select id="deleteUser">
+		DELETE			
+		FROM			lc_user
+		WHERE			u_id = #{username}
+	</select>
+	
+	<select id="deleteAuth">
+		DELETE			
+		FROM			lc_auth
+		WHERE			u_id = #{username}
+	</select>
+	
+	<select id="userCount" resultType="int">
+		SELECT COUNT(*) AS count
+		FROM lc_user
+	</select>
+	
+	<insert id="upgradeLevel">
+		INSERT INTO lc_auth(
+			u_id,
+			u_auth
+		) VALUES (
+			#{username},
+			'ROLE_ADMIN'
+		)
+	</insert>
+	
+	<select id="downgradeLevel">
+		DELETE			
+		FROM		lc_auth
+		WHERE		1=1
+		AND			u_id = #{username}
+		AND			u_auth= 'ROLE_ADMIN'
+	</select>
+	
+	<update id="selectUserLevel">
+		UPDATE lc_user SET
+			<choose>
+				<when test="uLevel == 1">
+					u_level = 2
+				</when>
+				<when test="uLevel == 2">
+					u_level = 1
+				</when>
+			</choose>
+		WHERE u_id=#{username}
+	</update>
+	
+	<update id="selectUserGrade">
+		UPDATE lc_user SET
+			<choose>
+				<when test="uLevel == 1">
+					u_grade = '관리자'
+				</when>
+				<when test="uLevel == 2">
+					u_grade = '회원'
+				</when>
+			</choose>
+		WHERE u_id=#{username}
+	</update>
+	
+	<update id="selectUserAuth">
+		UPDATE lc_auth SET
+			<choose>
+				<when test="uLevel == 1">
+					u_auth = "ROLE_ADMIN"
+				</when>
+				<when test="uLevel == 2">
+					u_auth = "ROLE_USER"
+				</when>
+			</choose>
+		WHERE u_id=#{username}
+	</update>
+	
+</mapper>
